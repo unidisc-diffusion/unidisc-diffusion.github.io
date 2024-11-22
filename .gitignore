@@ -1,0 +1,5 @@
+*.pdf
+*.mp4
+*.md
+ignore/
+.DS_Store
