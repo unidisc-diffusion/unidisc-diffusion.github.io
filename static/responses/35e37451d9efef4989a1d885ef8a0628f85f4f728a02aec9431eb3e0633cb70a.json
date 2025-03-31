@@ -1,0 +1,11 @@
+{
+  "role": "assistant",
+  "content": [
+    {
+      "type": "text",
+      "text": "Giraffe puppy wearing green shirt detailed portrait",
+      "image_url": null,
+      "is_mask": false
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "role": "assistant",
+  "content": [
+    {
+      "type": "text",
+      "text": "a curious happy puppy near the green grass.",
+      "image_url": null,
+      "is_mask": false
+    }
+  ]
+}

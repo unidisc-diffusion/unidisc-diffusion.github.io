@@ -1,0 +1,833 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <!-- Meta tags for social media banners -->
+  <meta name="description" content="UniDisc: Unified Multimodal Discrete Diffusion">
+  <meta property="og:title" content="UniDisc: Unified Multimodal Discrete Diffusion"/>
+  <meta property="og:description" content="UniDisc is a unified multimodal discrete diffusion model capable of jointly processing text and images for various tasks."/>
+  <meta property="og:url" content="https://yourwebsite.com"/>
+  <!-- Path to banner image -->
+  <meta property="og:image" content="static/images/banner_image.webp" />
+  <meta property="og:image:width" content="1200"/>
+  <meta property="og:image:height" content="630"/>
+
+  <meta name="twitter:title" content="UniDisc: Unified Multimodal Discrete Diffusion">
+  <meta name="twitter:description" content="UniDisc is a unified multimodal discrete diffusion model capable of jointly processing text and images for various tasks.">
+  <!-- Path to banner image -->
+  <meta name="twitter:image" content="static/images/banner_image.webp">
+  <meta name="twitter:card" content="summary_large_image">
+  <!-- Keywords -->
+  <meta name="keywords" content="UniDisc, Multimodal, Discrete Diffusion, Machine Learning, AI, Text Generation, Image Generation">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>UniDisc: Unified Multimodal Discrete Diffusion</title>
+  <!-- <link rel="icon" type="image/x-icon" href="static/images/favicon.ico"> -->
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+  rel="stylesheet">
+
+  <link rel="stylesheet" href="static/css/bulma.min.css">
+  <link rel="stylesheet" href="static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="static/css/index.css">
+  <style>
+    .container p {
+      padding-top: 1rem;
+    }
+    /* Add new custom column class */
+    .is-five-sixths {
+      flex: none;
+      width: 87.5%;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    a.anchor-link {
+      margin-left: 0.15em;
+      color: inherit;
+      text-decoration: none;
+      opacity: 0;
+      transition: opacity 0.2s;
+      font-size: 0.6em;
+      position: relative;
+      top: -0.15em;
+      cursor: pointer;
+    }
+
+    /* Show the anchor link on hover */
+    h2[id]:hover a.anchor-link {
+      opacity: 1;
+    }
+
+    .progressive-image-container {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .progressive-image {
+      opacity: 0;
+      transition: opacity 0.3s ease-in;
+    }
+
+    .progressive-image.loaded {
+      opacity: 1;
+    }
+
+    .image-placeholder {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: #f0f0f0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .spinner {
+      width: 40px;
+      height: 40px;
+      border: 4px solid #f3f3f3;
+      border-top: 4px solid #3273dc;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+  </style>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://documentcloud.adobe.com/view-sdk/main.js"></script>
+  <script defer src="static/js/fontawesome.all.min.js"></script>
+  <script src="static/js/bulma-carousel.min.js"></script>
+  <script src="static/js/bulma-slider.min.js"></script>
+  <script src="static/js/index.js"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+
+  <!-- Header Section -->
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <h1 class="title is-1 publication-title">UniDisc: Unified Multimodal Discrete Diffusion</h1>
+            <!--
+            <div class="is-size-5 publication-authors">
+              <span class="author-block">
+                <a href="FIRST AUTHOR PERSONAL LINK" target="_blank">First Author</a><sup>*</sup>,</span>
+                <span class="author-block">
+                  <a href="SECOND AUTHOR PERSONAL LINK" target="_blank">Second Author</a><sup>*</sup>,</span>
+                <span class="author-block">
+                    <a href="THIRD AUTHOR PERSONAL LINK" target="_blank">Third Author</a>
+              </span>
+              </div>
+             -->
+
+              <!-- <div class="is-size-5 publication-authors">
+                <span class="author-block">Institution Name<br>Conference Name, Year</span>
+                <span class="eql-cntrb"><small><br><sup>*</sup>Equal Contribution</small></span>
+              </div>  -->
+              <div class="is-size-5 publication-authors">
+                <span class="author-block">Anonymous Authors</span>
+              </div>
+
+                  <!-- 
+
+                  <div class="column has-text-centered">
+                    <div class="publication-links">
+                      <span class="link-block">
+                        <a href="https://arxiv.org/pdf/your_paper_id.pdf" target="_blank"
+                        class="external-link button is-normal is-rounded is-dark">
+                        <span class="icon">
+                          <i class="fas fa-file-pdf"></i>
+                        </span>
+                        <span>Paper</span>
+                      </a>
+                    </span>
+
+                    <span class="link-block">
+                      <a href="static/pdfs/supplementary_material.pdf" target="_blank"
+                      class="external-link button is-normal is-rounded is-dark">
+                      <span class="icon">
+                        <i class="fas fa-file-pdf"></i>
+                      </span>
+                      <span>Supplementary</span>
+                    </a>
+                  </span>
+
+                  <span class="link-block">
+                    <a href="https://github.com/your_repo_here" target="_blank"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fab fa-github"></i>
+                    </span>
+                    <span>Code</span>
+                  </a>
+                </span>
+
+                <span class="link-block">
+                  <a href="https://arxiv.org/abs/your_paper_id" target="_blank"
+                  class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                    <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+
+            -->
+
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Teaser Image -->
+  <section class="hero teaser">
+    <div class="container is-max-desktop">
+      <div class="hero-body">
+        <!-- <img src="static/images/joint_inpaint.webp" alt="Joint Inpainting"> -->
+        <picture>
+          <source srcset="static/images/main_fidelity.webp" type="image/webp">
+          <img src="static/images/main_fidelity.webp" alt="Joint Inpainting">
+        </picture>
+        <h2 class="subtitle has-text-centered">
+        <div style="margin-top: 10px;">
+          UniDisc jointly inpainting unseen image-text pairs. This ability is not possible with prior models such as T2I diffusion or AR models.
+        </div>
+        </h2>
+      </div>
+    </div>
+  </section>
+
+  <!-- Abstract -->
+  <section class="section hero is-light">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 id="abstract" class="title is-3">Abstract
+            <a href="#abstract" class="anchor-link">
+              <i class="fas fa-link"></i>
+            </a>
+          </h2>
+          <div class="content has-text-justified">
+            <p>
+              Multimodal generative models that can understand and generate across multiple modalities are dominated by autoregressive (AR) approaches, which process tokens sequentially from left to right, or top to bottom. These models jointly handle images, text, video, and audio for various tasks such as image captioning, question answering, and image generation. While AR models have been highly successful in the text domain, they have been found suboptimal for processing images, videos, and audio due to the high correlation between adjacent tokens which waste inference-time compute by separately predicting each one. In this work, we explore discrete diffusion models as a unified generative formulation in the joint text and image domain, building upon their recent success in the text domain alone. Discrete diffusion models offer several advantages over AR models, including improved control over quality versus diversity of generated samples, the ability to perform joint multimodal inpainting (across both text and image domains), and greater controllability in generation through guidance. Leveraging these benefits, we present the first <strong>Uni</strong>fied Multimodal <strong>Disc</strong>rete Diffusion (UniDisc) model, which is capable of jointly processing text and images for a variety of downstream tasks. We compare UniDisc to multimodal AR models of similar capacity, demonstrating that UniDisc outperforms them in terms of both performance and inference-time compute, enhanced controllability, editability, inpainting, and flexible trade-off of inference time versus generation quality.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+<!-- 
+  <section class="hero is-small">
+    <div class="hero-body">
+      <div class="container">
+        <div id="results-carousel" class="carousel results-carousel">
+        <div class="item">
+          <img src="static/images/architecture_diagram.webp" alt="MY ALT TEXT" style="padding-bottom: 20px;"/>
+          <h2 class="subtitle has-text-centered">
+            UniDisc's architecture.
+          </h2>
+        </div>
+        <div class="item">
+          <img src="static/images/modality_plot.webp" alt="MY ALT TEXT"/>
+          <h2 class="subtitle has-text-centered">
+            UniDisc's modality plot.
+          </h2>
+        </div>
+        <div class="item">
+          <img src="static/images/carousel3.jpg" alt="MY ALT TEXT"/>
+          <h2 class="subtitle has-text-centered">
+          Third image description.
+        </h2>
+      </div>
+      <div class="item">
+        <img src="static/images/carousel4.jpg" alt="MY ALT TEXT"/>
+        <h2 class="subtitle has-text-centered">
+          Fourth image description.
+        </h2>
+      </div>
+    </div>
+  </div>
+  </div>
+  </section> -->
+
+  <section class="hero is-small pt-6 pb-3">
+    <div class="hero-body">
+      <div class="container">
+        <h2 id="overall_architecture" class="title is-3 has-text-centered">
+          UniDisc Overview
+          <a href="#overall_architecture" class="anchor-link">
+            <i class="fas fa-link"></i>
+          </a>
+        </h2>
+        <div class="columns is-centered" style="padding-top: 20px;">
+          <div class="column is-full has-text-centered">
+            <picture>
+              <source srcset="static/images/unidisc_diagram_v1_crop.webp" type="image/webp">
+              <img src="static/images/unidisc_diagram_v1_crop.webp" alt="Modality Plot">
+            </picture>
+            <p style="padding-bottom: 30px;">UniDisc is a unified multimodal discrete diffusion model that can jointly process and generate text and images. First, each modality is converted into a sequnece of discrete tokens and we randomly replace a subset of these tokens with the [MASK] token according to a noise schedule and denoted in the figure with grey boxes. We jointly denoise the image and text and supervise with a weighted cross-entropy loss. At inference time we begin with a set of [MASK] tokens and iteratively unmask tokens.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="hero is-small pt-5 pb-6">
+    <div class="hero-body">
+      <div class="container">
+        <h2 id="visualizations" class="title is-3 has-text-centered">
+          Visualizations
+          <a href="#visualizations" class="anchor-link">
+            <i class="fas fa-link"></i>
+          </a>
+        </h2>
+        <div class="columns is-centered has-text-centered">
+          <div class="column is-five-sixths">
+            <br>
+            <h3 class="subtitle">Image-to-Text Generation</h3>
+            <picture>
+              <source srcset="static/images/i2t_v2.webp" type="image/webp">
+              <img src="static/images/i2t_v2.webp" alt="Text Generation from Image">
+            </picture>
+          </div>
+        </div>
+
+        <div class="columns is-centered">
+          <div class="column is-two-thirds has-text-centered">
+            <br>
+          </div>
+        </div>
+
+        <div class="columns is-centered">
+          <div class="column is-five-sixths has-text-centered">
+            <h3 class="subtitle">Text-to-Image Generation</h3>
+            <picture>
+              <source srcset="static/images/t2i_v2.webp" type="image/webp">
+              <img src="static/images/t2i_v2.webp" alt="Image Generation from Text">
+            </picture>
+          </div>
+        </div>
+
+        <div class="columns is-centered">
+          <div class="column is-five-sixths has-text-centered">
+            <br>
+          </div>
+        </div>
+
+        <div class="columns is-centered">
+          <div class="column is-five-sixths has-text-centered">
+            <h3 class="subtitle">Image Inpainting Given Text Prompt</h3>
+            <picture>
+              <source srcset="static/images/image_inpaint.webp" type="image/webp">
+              <img src="static/images/image_inpaint.webp" alt="Image Inpainting">
+            </picture>
+            <p>Text is provided to the model.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="hero is-small is-light pt-5 pb-6">
+    <div class="hero-body">
+      <div class="container">
+        <h2 id="zero_shot_editing" class="title is-3 has-text-centered">
+          Zero-shot Multimodal Editing w/UniDisc
+          <a href="#zero_shot_editing" class="anchor-link">
+            <i class="fas fa-link"></i>
+          </a>
+        </h2>
+        <div class="columns is-centered" style="padding-top: 1.5rem;">
+          <div class="column is-five-sixths has-text-centered">
+            <picture>
+              <source srcset="static/images/editing_explanation.webp" type="image/webp">
+              <img src="static/images/editing_explanation.webp" alt="Image Inpainting">
+            </picture>
+            <p></p>
+          </div>
+        </div>
+        <div class="columns is-centered" style="padding-top: 3.5rem;">
+          <div class="column is-five-sixths has-text-centered">
+            <h3 class="subtitle">Multimodal Editing Examples</h3>
+            <picture>
+              <source srcset="static/images/automatic_editing.webp" type="image/webp">
+              <img src="static/images/automatic_editing.webp" alt="Image Inpainting">
+            </picture>
+            <p>UniDisc can automatically improve a user provided image and caption. We adopt a best-of-n sampling strategy with n distinct noise masks. We unroll each generation until completion and use the model's own likelihood to determine select the best generation.</p>
+            <br>
+            <p>We augment real images by overlaying random objects from the COCO dataset. Similarly, we augment captions by asking an LLM to generate purposely incorrect variations. We then randomly mask the image and text inputs and unmask as described above, automatically removing these undesired image artifacts and generating the correct caption. There is no human intervention or masking in any examples. In the final row, we fix the text prompt, and only allow updates to the image.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="hero is-small pt-5 pb-6">
+    <div class="hero-body">
+      <div class="container">
+        <h2 id="zero_shot_inpainting" class="title is-3 has-text-centered">
+          Zero-shot Multimodal Inpainting w/UniDisc
+          <a href="#zero_shot_inpainting" class="anchor-link">
+            <i class="fas fa-link"></i>
+          </a>
+        </h2>
+        <div class="columns is-centered" style="padding-top: 1.5rem;">
+          <div class="column is-five-sixths has-text-centered">
+            <picture>
+              <source srcset="static/images/joint_infilling_v2.webp" type="image/webp">
+              <img src="static/images/joint_infilling_v2.webp" alt="Image Inpainting">
+            </picture>
+            <p>UniDisc is provided masked image and text inputs and jointly infills both modalities.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="hero is-small is-light pt-4 pb-6">
+    <div class="hero-body">
+      <div class="container">
+        <!-- Paper video. -->
+        <h2 id="multimodal_caching" class="title is-3 has-text-centered">
+          Multimodal Caching
+          <a href="#multimodal_caching" class="anchor-link">
+            <i class="fas fa-link"></i>
+          </a>
+        </h2>
+
+        <div class="columns is-centered">
+          <div class="column is-three-fifths has-text-centered">
+            <picture>
+              <source srcset="static/images/modality_plot.webp" type="image/webp">
+              <img src="static/images/modality_plot.webp" alt="Modality Plot">
+            </picture>
+            <p style="padding-bottom: 30px;">To take advantage of this, we design a novel multimodal caching mechanism that allows UniDisc to reuse the same denoising steps for specific modalities, reducing overall inference time.</p>
+            <picture>
+              <source srcset="static/images/architecture_diagram.webp" type="image/webp">
+              <img src="static/images/architecture_diagram.webp" alt="Text Generation from Image">
+            </picture>
+            <p>We maintain different noising schedules for image and text tokens, effectively setting a larger \(dt_{\text{image}}\) and a smaller \(dt_{\text{text}}\).</p>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  </section>
+
+
+  <section class="hero is-small pt-5 pb-6">
+    <div class="hero-body">
+      <div class="container">
+        <h2 id="generation_analysis" class="title is-3 has-text-centered">
+          Generation Analysis
+          <a href="#generation_analysis" class="anchor-link">
+            <i class="fas fa-link"></i>
+          </a>
+        </h2>
+        <div class="columns is-centered" style="margin-top: 2rem;">
+          <div class="column is-five-sixths has-text-centered">
+            <picture>
+              <source srcset="static/images/denoising_viz.webp" type="image/webp">
+              <img src="static/images/denoising_viz.webp" alt="Joint Infilling">
+            </picture>
+            <p>Intermediate Steps during Joint Infilling of Image and Text. UniDisc jointly infills both image and text during generation.</p>
+          </div>
+        </div>
+
+        <div class="columns is-centered" style="margin-top: 3rem;">
+          <div class="column is-full has-text-centered">
+            <h3 class="subtitle" style="margin-bottom: 2.0rem;">Uniform Concept Generation</h3>
+            <picture>
+              <source srcset="static/images/seg_viz_v2.webp" type="image/webp">
+              <img src="static/images/seg_viz_v2.webp" alt="Concept Generation">
+            </picture>
+            <p>To quantitatively analyze the generation order, we use an language-grounded segmentation model (Grounded SAM 2) to segment the image given the text prompt. We then record the order of token decoding when using confidence-based sampling and plot the progression of each region. We observe that the model generates uniformly over concepts and modalities. In AR this is not possible as the model must generate in a specific order (e.g., text first, then raster-order), and thus the model cannot jointly reason over modalities and multiple parts of the image.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+
+  <section class="hero is-small is-light pt-5 pb-6">
+    <div class="hero-body">
+      <div class="container">
+        <h2 id="cfg_ablation" class="title is-3 has-text-centered">
+          Classifier-Free Guidance Ablation
+          <a href="#cfg_ablation" class="anchor-link">
+            <i class="fas fa-link"></i>
+          </a>
+        </h2>
+        <div class="columns is-centered" style="margin-top: 2rem;">
+          <div class="column is-full has-text-centered">
+            <div style="display: flex; justify-content: center; gap: 1px;">
+              <picture>
+                <source srcset="static/images/cfg_fid.webp" type="image/webp">
+                <img src="static/images/cfg_fid.webp" alt="Concept Generation" style="width: 95%;">
+              </picture>
+              <picture>
+                <source srcset="static/images/cfg_clip_score.webp" type="image/webp">
+                <img src="static/images/cfg_clip_score.webp" alt="Concept Generation" style="width: 95%;"> 
+              </picture>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="hero is-small pt-5 pb-6">
+    <div class="hero-body">
+      <div class="container">
+        <h2 id="cfg_unidisc_ar_analysis" class="title is-3 has-text-centered">
+          Classifier-Free Guidance Analysis
+          <a href="#cfg_unidisc_ar_analysis" class="anchor-link">
+            <i class="fas fa-link"></i>
+          </a>
+        </h2>
+        <div class="columns is-centered">
+          <div class="column is-two-fifths has-text-centered">
+            <picture>
+              <source srcset="static/images/cfg_dist_vs_pct_tokens.webp" type="image/webp">
+              <img src="static/images/cfg_dist_vs_pct_tokens.webp" alt="Concept Generation">
+            </picture>
+          </div>
+        </div>
+        <div class="column is-full has-text-centered">
+          <p style="margin-bottom: 3rem; margin-top: -3.0rem;">L2 distance between unconditional and conditional logits over the course of generation.</p>
+        </div>
+        <div class="columns is-centered">
+          <div class="column is-full has-text-centered">
+            <h3 class="subtitle">Qualitative Effect of Classifier-Free Guidance</h3>
+            <picture>
+              <source srcset="static/images/cfg_v3.webp" type="image/webp">
+              <img src="static/images/cfg_v3.webp" alt="Classifier-Free Guidance" style="margin-bottom: -0.6rem;">
+            </picture>
+            <p style="margin-bottom: -0.8rem;">Effect of classifier-free guidance on UniDisc, from left to right, starting with \(w=0\), increasing to \(w=8\).</p>
+            <p>Caption: <i>Crab meditating, surfboard, orange sun setting, rainbow clouds, zen beach.</i></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="hero is-small pt-5 pb-6">
+    <div class="hero-body">
+      <div class="container">
+        <h2 id="inference_comparisons" class="title is-3 has-text-centered">
+          Inference Comparisons for UniDisc and AR baseline
+          <a href="#inference_comparisons" class="anchor-link">
+            <i class="fas fa-link"></i>
+          </a>
+        </h2>
+        <div class="columns is-centered">
+          <div class="column is-full has-text-centered">
+            <picture>
+              <source srcset="static/images/batch_size_times.webp" type="image/webp">
+              <img src="static/images/batch_size_times.webp" alt="Concept Generation" style="width: 60%;">
+            </picture>
+            <div style="display: flex; justify-content: center; gap: 1px;">
+              <picture>
+                <source srcset="static/images/fig_4_b.webp" type="image/webp">
+                <img src="static/images/fig_4_b.webp" alt="Concept Generation" style="width: 95%; margin-top: 4px; margin-right: -45px;">
+              </picture>
+              <picture>
+                <source srcset="static/images/fig_4_c_d.webp" type="image/webp">
+                <img src="static/images/fig_4_c_d.webp" alt="Concept Generation" style="width: 95%;">
+              </picture>
+            </div>
+            <p>
+              We analyze the quality of the generation versus time and observe a tradeoff between latency and throughput when comparing UniDisc and AR models. KV caching in AR models results in higher throughput as the batch size increases. This tradeoff can be explained by looking at the number of function evaluations (NFEs) and the cost of each in both cases. In AR generation w/KV caching, we have a fixed NFE, but each forward pass is substantially less expensive than in the NAR case. In contrast, in NAR, we can use substantially fewer NFEs, but each is more costly. Modern GPUs only reach peak throughput at larger batch sizes, or, in other words, as we decrease the batch size, the difference in computation per function evaluation diminishes, resulting in NAR having favorable performance.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="hero is-small pt-5 pb-6">
+    <div class="hero-body">
+      <div class="container">
+        <h2 id="length_extrapolation" class="title is-3 has-text-centered">
+          Zero-shot Length Extrapolation
+          <a href="#length_extrapolation" class="anchor-link">
+            <i class="fas fa-link"></i>
+          </a>
+        </h2>
+        <div class="columns is-centered">
+          <div class="column is-full has-text-centered">
+            <picture>
+              <source srcset="static/images/length_extrapolation.webp" type="image/webp">
+              <img src="static/images/length_extrapolation.webp" alt="Concept Generation">
+            </picture>  
+            <p style="margin-bottom: -0.8rem;">We demonstrate the ability of UniDisc to perform zero-shot flexible resolution generation thanks to due to the use of RoPE embeddings on both text and image tokens. This model was fine-tuned on 512x512 images, but is able to generate at 1024x1024 without further training.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="hero is-small is-light pt-5 pb-6">
+    <div class="hero-body">
+      <div class="container">
+        <h2 id="generative_perplexity_metrics" class="title is-3">
+          <div style="display: flex; justify-content: center; align-items: center;">
+            <span>Generative Perplexity — Qualitative Examples</span>
+            <a href="#generative_perplexity_metrics" class="anchor-link" style="margin-left: 0.6rem; margin-top: 0.65rem;">
+              <i class="fas fa-link"></i>
+            </a>
+          </div>
+        </h2>
+        <div class="columns is-centered">
+          <div class="column is-two-thirds">
+            <div style="display: flex; justify-content: center; align-items: center;">
+              <table border="1" style="margin: 0 auto; text-align: center; width: 100%;">
+                <tr>
+                  <th>Text</th>
+                  <th>Chameleon Perplexity</th>
+                  <th>GPT2 Perplexity</th>
+                </tr>
+                <tr>
+                  <td>"ICLR is globally renowned for presenting..." (Continued)</td>
+                  <td>32.836</td>
+                  <td>35.780</td>
+                </tr>
+                <tr>
+                  <td>"This is simple. This is simple." (Repeated)</td>
+                  <td>8.423</td>
+                  <td>3.930</td>
+                </tr>
+                <tr>
+                  <td>"Words Words Words Words" (Repeated)</td>
+                  <td>2.226</td>
+                  <td>3.583</td>
+                </tr>
+                <tr>
+                  <td>"AAAAAAAAAAA" (Repeated)</td>
+                  <td>2.732</td>
+                  <td>1.904</td>
+                </tr>
+                <tr>
+                  <td>"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" (Spaces Repeated)</td>
+                  <td>80.240</td>
+                  <td>1.095</td>
+                </tr>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="hero is-small pt-5 pb-6">
+    <div class="hero-body">
+      <div class="container">
+        <h2 id="quantitative_inpainting_comparison" class="title is-3 has-text-centered">
+          Quantitative Inpainting Comparison w/AR baseline
+          <a href="#quantitative_inpainting_comparison" class="anchor-link">
+            <i class="fas fa-link"></i>
+          </a>
+        </h2>
+        <div class="columns is-centered">
+          <div class="column is-two-thirds has-text-centered">
+            <picture>
+              <source srcset="static/images/inpainting_comparison.webp" type="image/webp">
+              <img src="static/images/inpainting_comparison.webp" alt="Concept Generation">
+            </picture>  
+            <p style="margin-bottom: -0.8rem;">We compare the performance of UniDisc (zero-shot) and AR (finetuned) on joint inpainting on DataComp1B. We find that at all levels of masking, UniDisc outperforms the AR baseline.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- BibTeX Citation -->
+  <!-- <section class="section" id="BibTeX">
+    <div class="container is-max-desktop content">
+      <h2 class="title">BibTeX</h2>
+      <pre><code>@article{your_citation_key,
+      title={UniDisc: Unified Multimodal Discrete Diffusion},
+      author={First Author and Second Author and Third Author},
+      journal={Conference Name},
+      year={2023}
+      }</code></pre>
+        </div>
+    </section> -->
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="columns is-centered">
+        <div class="column is-8">
+          <div class="content">
+  
+            <p>
+              This page was built using the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank">Academic Project Page Template</a> which was adopted from the <a href="https://nerfies.github.io" target="_blank">Nerfies</a> project page. This website is licensed under a <a rel="license"  href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative
+              Commons Attribution-ShareAlike 4.0 International License</a>.
+            </p>
+  
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- Good lazy loading with animation. For some reason, adding this conflicts with <picture> which is needed to optionally load webp images so for now we add the lazy load attribute (which should be removed when using the below code.) -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Ensure that we wait for all images to be loaded before scrolling to hash
+        const images = document.querySelectorAll('img');
+
+        let imagesLoaded = 0;
+        const totalImages = images.length;
+
+        images.forEach((img) => {
+          if (img.complete) {
+            imagesLoaded++;
+          } else {
+            img.addEventListener('load', function() {
+              imagesLoaded++;
+              if (imagesLoaded === totalImages) {
+                scrollToHash();
+              }
+            });
+            img.addEventListener('error', function() {
+              imagesLoaded++;
+              if (imagesLoaded === totalImages) {
+                scrollToHash();
+              }
+            });
+          }
+        });
+
+        // If no images or all images are already loaded
+        if (totalImages === 0 || imagesLoaded === totalImages) {
+          scrollToHash();
+        }
+
+        function scrollToHash() {
+          const hash = window.location.hash;
+          if (hash) {
+            // Use setTimeout to ensure scroll happens after all content is visible
+            setTimeout(() => {
+              const target = document.querySelector(hash);
+              if (target) {
+                target.scrollIntoView({ behavior: 'smooth' });
+              }
+            }, 100);
+          }
+        }
+      });
+
+    $(document).ready(function() {
+      $('a.anchor-link').on('click', function(e) {
+        e.preventDefault(); // Prevent the default anchor behavior
+
+        // Get the href attribute (e.g., "#abstract")
+        var anchor = $(this).attr('href');
+
+        // Construct the full URL with the anchor
+        var url = window.location.origin + window.location.pathname + anchor;
+
+        // Copy the URL to the clipboard using the Clipboard API
+        if (navigator.clipboard && window.isSecureContext) {
+          // navigator.clipboard API method
+          navigator.clipboard.writeText(url).then(function() {
+            // Success feedback: Change icon to checkmark
+            var $icon = $(e.currentTarget).find('i');
+            $icon.removeClass('fa-link').addClass('fa-check');
+
+            // Revert back to the original icon after 2 seconds
+            setTimeout(function() {
+              $icon.removeClass('fa-check').addClass('fa-link');
+            }, 2000);
+          }, function(err) {
+            console.error('Could not copy text: ', err);
+            alert('Failed to copy the link. Please try again.');
+          });
+        } else {
+          // Fallback method for older browsers
+          var textArea = document.createElement("textarea");
+          textArea.value = url;
+          // Make the textarea out of viewport
+          textArea.style.position = "fixed";
+          textArea.style.left = "-999999px";
+          document.body.appendChild(textArea);
+          textArea.focus();
+          textArea.select();
+          try {
+            document.execCommand('copy');
+            // Success feedback: Change icon to checkmark
+            var $icon = $(e.currentTarget).find('i');
+            $icon.removeClass('fa-link').addClass('fa-check');
+
+            // Revert back to the original icon after 2 seconds
+            setTimeout(function() {
+              $icon.removeClass('fa-check').addClass('fa-link');
+            }, 2000);
+          } catch (err) {
+            console.error('Fallback: Oops, unable to copy', err);
+            alert('Failed to copy the link. Please try manually.');
+          }
+          document.body.removeChild(textArea);
+        }
+      });
+    });
+
+
+    document.addEventListener('DOMContentLoaded', function() {
+      const images = document.querySelectorAll('img');
+      
+      images.forEach(img => {
+        // Create container
+        const container = document.createElement('div');
+        container.className = 'progressive-image-container';
+        img.parentNode.insertBefore(container, img);
+        
+        // Create placeholder
+        const placeholder = document.createElement('div');
+        placeholder.className = 'image-placeholder';
+        placeholder.innerHTML = '<div class="spinner"></div>';
+        container.appendChild(placeholder);
+        
+        // Move image into container
+        container.appendChild(img);
+        img.className += ' progressive-image';
+        
+        // Load image
+        const newImg = new Image();
+        newImg.src = img.src;
+        newImg.onload = function() {
+          img.classList.add('loaded');
+          placeholder.style.display = 'none';
+        };
+      });
+    });
+  </script>
+
+</body>
+</html>

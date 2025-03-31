@@ -1,0 +1,11 @@
+{
+  "role": "assistant",
+  "content": [
+    {
+      "type": "text",
+      "text": "a happy giraffe with a top hat shirt",
+      "image_url": null,
+      "is_mask": false
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "role": "assistant",
+  "content": [
+    {
+      "type": "text",
+      "text": "a golden retridis playing in the grass outside.",
+      "image_url": null,
+      "is_mask": false
+    }
+  ]
+}

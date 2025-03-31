@@ -1,0 +1,11 @@
+{
+  "role": "assistant",
+  "content": [
+    {
+      "type": "text",
+      "text": "a tall puppy wearing a gira shirt.",
+      "image_url": null,
+      "is_mask": false
+    }
+  ]
+}

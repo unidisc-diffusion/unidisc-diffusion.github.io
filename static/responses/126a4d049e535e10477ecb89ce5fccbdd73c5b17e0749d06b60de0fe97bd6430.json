@@ -1,0 +1,11 @@
+{
+  "role": "assistant",
+  "content": [
+    {
+      "type": "text",
+      "text": "the playful little cat sits near the football field.",
+      "image_url": null,
+      "is_mask": false
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "role": "assistant",
+  "content": [
+    {
+      "type": "text",
+      "text": "a curious golden retrinnis playing near the cozy home.",
+      "image_url": null,
+      "is_mask": false
+    }
+  ]
+}

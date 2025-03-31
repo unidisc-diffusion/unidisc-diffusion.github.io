@@ -1,0 +1,11 @@
+{
+  "role": "assistant",
+  "content": [
+    {
+      "type": "text",
+      "text": "a happy giraffe we zip top hat portrait.",
+      "image_url": null,
+      "is_mask": false
+    }
+  ]
+}

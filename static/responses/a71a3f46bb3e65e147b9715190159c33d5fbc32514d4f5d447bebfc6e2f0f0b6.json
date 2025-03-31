@@ -1,0 +1,11 @@
+{
+  "role": "assistant",
+  "content": [
+    {
+      "type": "text",
+      "text": "three golden corgis having fun in the green grass.",
+      "image_url": null,
+      "is_mask": false
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "role": "assistant",
+  "content": [
+    {
+      "type": "text",
+      "text": "a golden yellow fris playing fetch at supercozy home.",
+      "image_url": null,
+      "is_mask": false
+    }
+  ]
+}

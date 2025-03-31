@@ -1,0 +1,11 @@
+{
+  "role": "assistant",
+  "content": [
+    {
+      "type": "text",
+      "text": "a curious golden dogin the grass outside.",
+      "image_url": null,
+      "is_mask": false
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "role": "assistant",
+  "content": [
+    {
+      "type": "text",
+      "text": "dog little cat playing in grass at sunny park.",
+      "image_url": null,
+      "is_mask": false
+    }
+  ]
+}

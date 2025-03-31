@@ -1,0 +1,11 @@
+{
+  "role": "assistant",
+  "content": [
+    {
+      "type": "text",
+      "text": "the playful happy puppy sits haynear the sunny park.",
+      "image_url": null,
+      "is_mask": false
+    }
+  ]
+}

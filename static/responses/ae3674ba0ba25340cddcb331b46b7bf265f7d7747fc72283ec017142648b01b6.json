@@ -1,0 +1,11 @@
+{
+  "role": "assistant",
+  "content": [
+    {
+      "type": "text",
+      "text": "the doglittle cat is playing in the raysunny park.",
+      "image_url": null,
+      "is_mask": false
+    }
+  ]
+}

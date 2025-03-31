@@ -1,0 +1,11 @@
+{
+  "role": "assistant",
+  "content": [
+    {
+      "type": "text",
+      "text": "happy puppy at hoppin the dog park.",
+      "image_url": null,
+      "is_mask": false
+    }
+  ]
+}

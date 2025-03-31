@@ -1,0 +1,11 @@
+{
+  "role": "assistant",
+  "content": [
+    {
+      "type": "text",
+      "text": "a curious little cat is having fun playing with a ball.",
+      "image_url": null,
+      "is_mask": false
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "role": "assistant",
+  "content": [
+    {
+      "type": "text",
+      "text": "the playful golden dog goin the sunny park.",
+      "image_url": null,
+      "is_mask": false
+    }
+  ]
+}

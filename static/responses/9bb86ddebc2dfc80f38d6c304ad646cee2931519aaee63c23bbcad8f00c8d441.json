@@ -1,0 +1,11 @@
+{
+  "role": "assistant",
+  "content": [
+    {
+      "type": "text",
+      "text": "a tall puppy iraffe with shirt on neck.",
+      "image_url": null,
+      "is_mask": false
+    }
+  ]
+}

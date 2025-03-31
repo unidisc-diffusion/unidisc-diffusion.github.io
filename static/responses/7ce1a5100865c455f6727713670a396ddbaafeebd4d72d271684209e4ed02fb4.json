@@ -1,0 +1,11 @@
+{
+  "role": "assistant",
+  "content": [
+    {
+      "type": "text",
+      "text": "the playful little cat was just found fetch in asunny park.",
+      "image_url": null,
+      "is_mask": false
+    }
+  ]
+}

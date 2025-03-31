@@ -1,0 +1,11 @@
+{
+  "role": "assistant",
+  "content": [
+    {
+      "type": "text",
+      "text": "the younglittle cat is having fun at our dogcozy home.",
+      "image_url": null,
+      "is_mask": false
+    }
+  ]
+}

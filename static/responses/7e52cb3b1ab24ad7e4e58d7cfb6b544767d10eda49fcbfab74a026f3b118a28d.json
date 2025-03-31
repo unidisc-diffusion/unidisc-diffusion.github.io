@@ -1,0 +1,11 @@
+{
+  "role": "assistant",
+  "content": [
+    {
+      "type": "text",
+      "text": "the playful little cat is having fun in this sunsunny park.",
+      "image_url": null,
+      "is_mask": false
+    }
+  ]
+}

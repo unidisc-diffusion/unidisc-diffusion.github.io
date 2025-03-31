@@ -1,0 +1,11 @@
+{
+  "role": "assistant",
+  "content": [
+    {
+      "type": "text",
+      "text": "a happy puppy Laur a giraffes neck",
+      "image_url": null,
+      "is_mask": false
+    }
+  ]
+}

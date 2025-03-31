@@ -1,0 +1,11 @@
+{
+  "role": "assistant",
+  "content": [
+    {
+      "type": "text",
+      "text": "the playful golden retrievernear the cozy home.",
+      "image_url": null,
+      "is_mask": false
+    }
+  ]
+}

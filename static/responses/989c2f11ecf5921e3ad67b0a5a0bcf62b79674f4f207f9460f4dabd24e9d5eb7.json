@@ -1,0 +1,11 @@
+{
+  "role": "assistant",
+  "content": [
+    {
+      "type": "text",
+      "text": "a curious happy puppy plays fetchin the sunny park.",
+      "image_url": null,
+      "is_mask": false
+    }
+  ]
+}

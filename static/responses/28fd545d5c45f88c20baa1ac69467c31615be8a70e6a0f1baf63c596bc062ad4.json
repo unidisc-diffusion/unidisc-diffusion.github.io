@@ -1,0 +1,11 @@
+{
+  "role": "assistant",
+  "content": [
+    {
+      "type": "text",
+      "text": "giraffe with green shirt wearing a top hat k",
+      "image_url": null,
+      "is_mask": false
+    }
+  ]
+}

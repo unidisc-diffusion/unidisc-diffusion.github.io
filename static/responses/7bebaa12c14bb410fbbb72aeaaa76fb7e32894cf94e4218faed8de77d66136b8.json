@@ -1,0 +1,11 @@
+{
+  "role": "assistant",
+  "content": [
+    {
+      "type": "text",
+      "text": "a golden retriever football on the grass.",
+      "image_url": null,
+      "is_mask": false
+    }
+  ]
+}

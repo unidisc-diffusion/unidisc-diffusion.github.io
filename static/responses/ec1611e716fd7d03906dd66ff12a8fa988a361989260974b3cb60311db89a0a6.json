@@ -1,0 +1,11 @@
+{
+  "role": "assistant",
+  "content": [
+    {
+      "type": "text",
+      "text": "Close up giraffe with a green shirt detailed portrait",
+      "image_url": null,
+      "is_mask": false
+    }
+  ]
+}

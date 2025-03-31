@@ -1,0 +1,11 @@
+{
+  "role": "assistant",
+  "content": [
+    {
+      "type": "text",
+      "text": "the playful little cat is pulling the ballin the sunny park.",
+      "image_url": null,
+      "is_mask": false
+    }
+  ]
+}
