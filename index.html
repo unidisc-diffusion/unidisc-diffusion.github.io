@@ -975,12 +975,195 @@
               <img src="static/images/unidisc_cfg.png" alt="Classifier-Free Guidance" style="margin-bottom: -0.6rem;">
             </picture>
             <p style="margin-bottom: -0.8rem;">Effect of classifier-free guidance in UniDisc, from left to right.</p>
-            <!-- <p>Caption: <i>Crab meditating, surfboard, orange sun setting, rainbow clouds, zen beach.</i></p> -->
           </div>
         </div>
       </div>
     </div>
   </section>
+
+  <!-- New Qualitative Generations Section -->
+  <section class="hero is-small pt-5 pb-6 is-light">
+    <div class="hero-body">
+      <div class="container">
+        <h2 id="qualitative_generations" class="title is-3 has-text-centered">
+          Qualitative Generations with Varying Steps/Token Ratio
+          <a href="#qualitative_generations" class="anchor-link">
+            <i class="fas fa-link"></i>
+          </a>
+        </h2>
+        <div class="columns is-centered" style="margin-top: 2rem;">
+          <div class="column is-full">
+            <div class="columns is-multiline is-mobile">
+              <!-- Image 0 -->
+              <div class="column is-one-quarter-desktop is-half-tablet is-full-mobile generation-column">
+                <picture>
+                  <source srcset="static/images/img0.png" type="image/png">
+                  <img src="static/images/img0.png" alt="Scaling Laws">
+                </picture>
+                <div class="caption-container">
+                  <p><strong>0.15 steps/token:</strong> contributions the forest sun Sun fruit untouchical undorn trees unicorn prancing through beauty fruit fruit fruit under dapp sun sun unappear lightlight field on fruit fruit sun everywhere</p>
+                  <p><strong>0.50 steps/token:</strong> sunlight breaking through a forest of trees and into a cushappled meadow where a unicorn runs free among the fruitland vegetables</p>
+                  <p><strong>1.00 steps/token:</strong> A lush green forest with a sun blue sky brightly, shining through the trees and casting long shadows. A unicorn with a spiraled horn and a green mane is visible in the foreground. In the bottom right corner, there are various fruits and leaves including apples, oranges. There are also some yellow flowers scattered in the lush green grass.</p>
+                </div>
+              </div>
+              <!-- Image 1 -->
+              <div class="column is-one-quarter-desktop is-half-tablet is-full-mobile generation-column">
+                <picture>
+                  <source srcset="static/images/img1.png" type="image/png">
+                  <img src="static/images/img1.png" alt="Generation 1">
+                </picture>
+                <div class="caption-container">
+                  <p><strong>0.15 steps/token:</strong> panda with waving paw wavingaving nature panda withaving human thumb weaving Hawaiian print shirt</p>
+                  <p><strong>0.50 steps/token:</strong> cute adult panda in a Hawaiian shirt waving baby gorilla in a Hawaiian shirt</p>
+                  <p><strong>1.00 steps/token:</strong> Panda with floral shirt, waving to zoo visitor, tropical background</p>
+                </div>
+              </div>
+              <!-- Image 2 -->
+              <div class="column is-one-quarter-desktop is-half-tablet is-full-mobile generation-column">
+                <picture>
+                  <source srcset="static/images/img2.png" type="image/png">
+                  <img src="static/images/img2.png" alt="Generation 2">
+                </picture>
+                <div class="caption-container">
+                  <p><strong>0.15 steps/token:</strong> intricatecut clock clock clock clock clock drawing drawing clock drawing drawing drawing detailed carv stone cathedral building facade</p>
+                  <p><strong>0.50 steps/token:</strong> etching of a medieval cathedral clock's intricate stone carvings</p>
+                  <p><strong>1.00 steps/token:</strong> Detailed drawing of clock on the facade of a historic, medieval-style monastery, with intricate stone carvings.</p>
+                </div>
+              </div>
+              <!-- Image 3 -->
+              <div class="column is-one-quarter-desktop is-half-tablet is-full-mobile generation-column">
+                <picture>
+                  <source srcset="static/images/img3.png" type="image/png">
+                  <img src="static/images/img3.png" alt="Generation 3">
+                </picture>
+                <div class="caption-container">
+                   <p><strong>0.15 steps/token:</strong> futurical burgereburgerurgerurger azure motor bike neon cityss chrome</p>
+                   <p><strong>0.50 steps/token:</strong> Silver motorcycle, hamburger sculpture, neon signs, cyberpunk cityscape</p>
+                   <p><strong>1.00 steps/token:</strong> A metallic hamburger motorcycle on a neon-lit cityscape</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="hero is-small pt-4 pb-6">
+    <div class="hero-body">
+      <div class="container">
+        <!-- Paper video. -->
+        <h2 id="multimodal_caching" class="title is-3 has-text-centered">
+          Multimodal Caching
+          <a href="#multimodal_caching" class="anchor-link">
+            <i class="fas fa-link"></i>
+          </a>
+        </h2>
+
+        <div class="columns is-centered">
+          <div class="column is-three-fifths has-text-centered">
+            <picture>
+              <source srcset="static/images/modality_plot.webp" type="image/webp">
+              <img src="static/images/modality_plot.webp" alt="Modality Plot">
+            </picture>
+            <p style="padding-bottom: 30px;">To take advantage of this, we design a novel multimodal caching mechanism that allows UniDisc to reuse the same denoising steps for specific modalities, reducing overall inference time.</p>
+            <picture>
+              <source srcset="static/images/architecture_diagram.webp" type="image/webp">
+              <img src="static/images/architecture_diagram.webp" alt="Text Generation from Image">
+            </picture>
+            <p>We maintain different noising schedules for image and text tokens, effectively setting a larger \(dt_{\text{image}}\) and a smaller \(dt_{\text{text}}\).</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="hero is-small is-light pt-4 pb-6">
+    <div class="hero-body">
+      <div class="container">
+        <!-- Paper video. -->
+        <h2 id="multimodal_caching" class="title is-3 has-text-centered">
+          Caching Inference Analysis
+          <a href="#multimodal_caching" class="anchor-link">
+            <i class="fas fa-link"></i>
+          </a>
+        </h2>
+        <div class="columns is-centered">
+          <div class="column is-three-fifths has-text-centered">
+            <picture>
+              <source srcset="static/images/cache_time.png" type="image/png">
+              <img src="static/images/cache_time.png" alt="Text Generation from Image">
+            </picture>
+            <p>Figure 27: Latency vs. Seq Length for our caching approach - image-to-text tokens ratio = 1/4. We empirically find k = 10
+              from Fig. 7 based on the saturation steps for image to text.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+    
+
+  <!-- New Ablation Study Section -->
+  <section class="hero is-small pt-5 pb-6">
+    <div class="hero-body">
+      <div class="container">
+        <h2 id="ablation_study" class="title is-3 has-text-centered">
+          Design Choices Ablation Study
+          <a href="#ablation_study" class="anchor-link">
+            <i class="fas fa-link"></i>
+          </a>
+        </h2>
+        <div class="columns is-centered" style="margin-top: 2rem;">
+          <div class="column is-two-thirds"> <!-- Adjusted column width -->
+            <table class="table is-bordered is-striped is-hoverable is-fullwidth">
+              <thead>
+                <tr>
+                  <th class="has-text-centered">Configuration</th>
+                  <th class="has-text-centered">DataComp1B Validation PPL</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>UniDisc</td>
+                  <td class="has-text-centered">93.8</td>
+                </tr>
+                <tr>
+                  <td>w/o QK Norm</td>
+                  <td class="has-text-centered">92.7</td>
+                </tr>
+                <tr>
+                  <td>w/ Zero-linear init</td>
+                  <td class="has-text-centered">93.8</td>
+                </tr>
+                <tr>
+                  <td>w/o RMSNorm</td>
+                  <td class="has-text-centered">93.8</td>
+                </tr>
+                <tr>
+                  <td>w/o -inf for invalid tokens</td>
+                  <td class="has-text-centered">94.7</td>
+                </tr>
+                <tr>
+                  <td>w/o Softmin SNR</td>
+                  <td class="has-text-centered">109.6</td>
+                </tr>
+                <tr>
+                  <td>None (Baseline/AR)</td> <!-- Assuming "None" refers to a baseline -->
+                  <td class="has-text-centered">111.2</td>
+                </tr>
+              </tbody>
+            </table>
+            <p class="has-text-centered" style="margin-top: 1rem;">
+              <b>Table 4.</b> Ablation w/115M parameter model of QK Norm, zero initialization of linear layers, RMSNorm, setting invalid tokens to \(-\infty\) during training and generation, and Softmin SNR.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
 
   <!-- Footer -->
   <footer class="footer">
