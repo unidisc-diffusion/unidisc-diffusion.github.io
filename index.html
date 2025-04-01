@@ -986,7 +986,7 @@
     <div class="hero-body">
       <div class="container">
         <h2 id="qualitative_generations" class="title is-3 has-text-centered">
-          Qualitative Generations with Varying Steps/Token Ratio
+          Qualitative Text Generations with Varying Steps/Token Ratio
           <a href="#qualitative_generations" class="anchor-link">
             <i class="fas fa-link"></i>
           </a>
@@ -1041,6 +1041,213 @@
                    <p><strong>0.50 steps/token:</strong> Silver motorcycle, hamburger sculpture, neon signs, cyberpunk cityscape</p>
                    <p><strong>1.00 steps/token:</strong> A metallic hamburger motorcycle on a neon-lit cityscape</p>
                 </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="hero is-small pt-5 pb-6">
+    <div class="hero-body">
+      <div class="container">
+        <h2 id="t2i_generations" class="title is-3 has-text-centered">
+          Qualitative Image Generations with Varying Steps/Token Ratio
+          <a href="#t2i_generations" class="anchor-link">
+            <i class="fas fa-link"></i>
+          </a>
+        </h2>
+        <style>
+          #t2i_generations .caption-column {
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Center content horizontally */
+          }
+          #t2i_generations .caption-text {
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 1.5rem; /* Space below caption */
+            height: 150px; /* Increased fixed height significantly */
+            display: flex; /* Use flexbox for vertical centering */
+            align-items: center; /* Vertically center text */
+            justify-content: center; /* Horizontally center text (redundant with text-align, but safe) */
+            width: 100%; /* Ensure it takes full width */
+          }
+          #t2i_generations .image-set {
+            width: 100%;
+          }
+          #t2i_generations .image-item {
+            margin-bottom: 1rem; /* Space below each image and its label */
+            text-align: center;
+          }
+          #t2i_generations .image-label {
+            font-size: 0.9rem;
+            color: #555;
+            margin-bottom: 0.25rem;
+            font-weight: bold;
+          }
+          #t2i_generations .generation-image {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+          }
+          #t2i_generations .placeholder-image {
+             width: 100%; 
+             aspect-ratio: 1 / 1; /* Maintain square aspect ratio */
+             background-color: #f0f0f0; 
+             display: flex; 
+             align-items: center; 
+             justify-content: center; 
+             color: #aaa; 
+             font-style: italic;
+             margin-left: auto;
+             margin-right: auto;
+             max-width: 256px; /* Limit placeholder size */
+             box-sizing: border-box; /* Include padding/border in size */
+             padding: 10px;
+          }
+
+        </style>
+        <div class="columns is-centered is-multiline" style="margin-top: 2rem;">
+          <!-- Column 1: t2i_0 -->
+          <div class="column is-one-fifth caption-column">
+            <p class="caption-text">a cozy cabin's interior, including a wooden bed and a stone fireplace</p>
+            <div class="image-set">
+              <div class="image-item">
+                <p class="image-label">0.01 steps/token</p>
+                <picture>
+                  <source srcset="static/images/t2i_0_img0.png" type="image/png">
+                  <img src="static/images/t2i_0_img0.png" alt="Cabin interior 0.15" class="generation-image">
+                </picture>
+              </div>
+              <div class="image-item">
+                <p class="image-label">0.03 steps/token</p>
+                <picture>
+                  <source srcset="static/images/t2i_0_img1.png" type="image/png">
+                  <img src="static/images/t2i_0_img1.png" alt="Cabin interior 0.50" class="generation-image">
+                </picture>
+              </div>
+              <div class="image-item">
+                <p class="image-label">0.05 steps/token</p>
+                <picture>
+                  <source srcset="static/images/t2i_0_img2.png" type="image/png">
+                  <img src="static/images/t2i_0_img2.png" alt="Cabin interior 0.75" class="generation-image">
+                </picture>
+              </div>
+              <div class="image-item">
+                <p class="image-label">0.10 steps/token</p>
+                <picture>
+                  <source srcset="static/images/t2i_0_img3.png" type="image/png">
+                  <img src="static/images/t2i_0_img3.png" alt="Cabin interior 1.00" class="generation-image">
+                </picture>
+              </div>
+            </div>
+          </div>
+
+          <!-- Column 2: t2i_2 -->
+          <div class="column is-one-fifth caption-column">
+            <p class="caption-text">a sculpture of a bird by Paolo Uccello<br><br></p>
+            <div class="image-set">
+              <div class="image-item">
+                <p class="image-label">0.01 steps/token</p>
+                <picture>
+                  <source srcset="static/images/t2i_2_img0.png" type="image/png">
+                  <img src="static/images/t2i_2_img0.png" alt="Bird sculpture 0.15" class="generation-image">
+                </picture>
+              </div>
+              <div class="image-item">
+                <p class="image-label">0.03 steps/token</p>
+                <picture>
+                  <source srcset="static/images/t2i_2_img1.png" type="image/png">
+                  <img src="static/images/t2i_2_img1.png" alt="Bird sculpture 0.50" class="generation-image">
+                </picture>
+              </div>
+              <div class="image-item">
+                <p class="image-label">0.05 steps/token</p>
+                <picture>
+                  <source srcset="static/images/t2i_2_img2.png" type="image/png">
+                  <img src="static/images/t2i_2_img2.png" alt="Bird sculpture 0.75" class="generation-image">
+                </picture>
+              </div>
+              <div class="image-item">
+                <p class="image-label">0.10 steps/token</p>
+                <picture>
+                  <source srcset="static/images/t2i_2_img3.png" type="image/png">
+                  <img src="static/images/t2i_2_img3.png" alt="Bird sculpture 1.00" class="generation-image">
+                </picture>
+              </div>
+            </div>
+          </div>
+
+          <!-- Column 3: t2i_3 -->
+          <div class="column is-one-fifth caption-column">
+            <p class="caption-text">colorful small to massive vases artfully arranged in front of a colorful street art mural</p>
+            <div class="image-set">
+              <div class="image-item">
+                <p class="image-label">0.01 steps/token</p>
+                <picture>
+                  <source srcset="static/images/t2i_3_img0.png" type="image/png">
+                  <img src="static/images/t2i_3_img0.png" alt="Vases and mural 0.15" class="generation-image">
+                </picture>
+              </div>
+              <div class="image-item">
+                <p class="image-label">0.03 steps/token</p>
+                <picture>
+                  <source srcset="static/images/t2i_3_img1.png" type="image/png">
+                  <img src="static/images/t2i_3_img1.png" alt="Vases and mural 0.50" class="generation-image">
+                </picture>
+              </div>
+              <div class="image-item">
+                <p class="image-label">0.05 steps/token</p>
+                <picture>
+                  <source srcset="static/images/t2i_3_img2.png" type="image/png">
+                  <img src="static/images/t2i_3_img2.png" alt="Vases and mural 0.75" class="generation-image">
+                </picture>
+              </div>
+              <div class="image-item">
+                <p class="image-label">0.10 steps/token</p>
+                <picture>
+                  <source srcset="static/images/t2i_3_img3.png" type="image/png">
+                  <img src="static/images/t2i_3_img3.png" alt="Vases and mural 1.00" class="generation-image">
+                </picture>
+              </div>
+            </div>
+          </div>
+
+          <!-- Column 4: t2i_4 -->
+          <div class="column is-one-fifth caption-column">
+            <p class="caption-text">A stylized digital rendering of Mount Olympus from ancient Greek mythology</p>
+            <div class="image-set">
+              <div class="image-item">
+                <p class="image-label">0.01 steps/token</p>
+                <picture>
+                  <source srcset="static/images/t2i_4_img0.png" type="image/png">
+                  <img src="static/images/t2i_4_img0.png" alt="Mount Olympus 0.15" class="generation-image">
+                </picture>
+              </div>
+              <div class="image-item">
+                <p class="image-label">0.03 steps/token</p>
+                <picture>
+                  <source srcset="static/images/t2i_4_img1.png" type="image/png">
+                  <img src="static/images/t2i_4_img1.png" alt="Mount Olympus 0.50" class="generation-image">
+                </picture>
+              </div>
+              <div class="image-item">
+                <p class="image-label">0.05 steps/token</p>
+                <picture>
+                  <source srcset="static/images/t2i_4_img2.png" type="image/png">
+                  <img src="static/images/t2i_4_img2.png" alt="Mount Olympus 0.75" class="generation-image">
+                </picture>
+              </div>
+              <div class="image-item">
+                <p class="image-label">0.10 steps/token</p>
+                <picture>
+                  <source srcset="static/images/t2i_4_img3.png" type="image/png">
+                  <img src="static/images/t2i_4_img3.png" alt="Mount Olympus 1.00" class="generation-image">
+                </picture>
               </div>
             </div>
           </div>
@@ -1104,7 +1311,6 @@
     </div>
   </section>
     
-
   <!-- New Ablation Study Section -->
   <section class="hero is-small pt-5 pb-6">
     <div class="hero-body">
@@ -1187,7 +1393,6 @@
       </div>
     </div>
   </section>
-
 
   <!-- Footer -->
   <footer class="footer">
