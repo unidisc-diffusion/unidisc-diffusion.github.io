@@ -981,6 +981,39 @@
     </div>
   </section>
 
+  <section class="hero is-light is-small">
+    <div class="hero-body">
+      <div class="container">
+        <h2 id="cfg_visualization" class="title is-3 has-text-centered">
+          Qualitative CFG Visualization
+          <a href="#cfg_visualization" class="anchor-link">
+            <i class="fas fa-link"></i>
+          </a>
+        </h2>
+        <div id="results-carousel" class="carousel results-carousel">
+          <div class="item item-steve">
+            <picture poster="" id="steve" height="100%">
+              <img src="static/images/UniDisc_cur.001.jpeg" alt="UniDisc_cur.001.jpeg">
+            </picture>
+          </div>
+          <div class="item item-chair-tp">
+            <picture poster="" id="chair-tp" height="100%">
+              <img src="static/images/UniDisc_cur.002.jpeg" alt="UniDisc_cur.002.jpeg">
+            </picture>
+          </div>
+          <div class="item item-shiba">
+            <picture poster="" id="shiba" height="100%">
+              <img src="static/images/UniDisc_cur.003.jpeg" alt="UniDisc_cur.003.jpeg">
+            </picture>
+          </div>
+        </div>
+        <p class="has-text-centered">
+          Visualization of the conditional and unconditional prediction, p(x_0) of UniDisc. Click to the right to see the prediction change as the denoising step increases. We see that at the 0th timestep, the unconditional prediction significantly differs from the conditional prediction. However, at just the 3rd step, the unconditional prediction appears to closely match the conditional prediction, demonstrating why autoregressive models obtain a smaller benefit compared to discrete diffusion models. For a quantitative analysis, please refer to <a href="#cfg_unidisc_ar_analysis" target="_blank" style="font-weight: bold; color: #3273dc; text-decoration: underline;">the CFG Analysis Section</a>.
+        </p>
+      </div>
+    </div>
+  </section>
+
   <!-- New Qualitative Generations Section -->
   <section class="hero is-small pt-5 pb-6 is-light">
     <div class="hero-body">
