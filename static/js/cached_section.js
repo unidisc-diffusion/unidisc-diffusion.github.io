@@ -75,9 +75,17 @@
             height: rows
         };
     }
+
+    function isChromeBrowser() {
+      return /Chrome/.test(navigator.userAgent) && navigator.vendor === "Google Inc.";
+    }
     
 
     async function callUnidiscAPI(imageBlob, maskArray, sentence, options = {}) {
+
+        if (!isChromeBrowser()) {
+          alert("Warning: The pre-cached demo only works in Chrome due to differences in hashing algorithms.");
+        }
         // Use effective image removal flag based on options or the global isImageRemoved.
         const effectiveIsImageRemoved = (options.noImage === true) ? true : isImageRemoved;
         let customAPIUrl = API_URL;
